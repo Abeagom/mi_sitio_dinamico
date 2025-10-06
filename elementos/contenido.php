@@ -1,9 +1,9 @@
 <?php
 // Estructura asociativa: producto => precio
 $productos = [
-  "Pan de Camas"        => 1.20,
-  "Aceitunas aliñadas"  => 2.50,
-  "Tortas de aceite"    => 3.00
+  "Pan de Camas" => 1.20,
+  "Aceitunas aliñadas" => 2.50,
+  "Tortas de aceite" => 3.00
 ];
 ?>
 
@@ -17,11 +17,17 @@ $productos = [
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($productos as $nombre => $precio): ?>
-      <tr>
-        <td><?= htmlspecialchars($nombre) ?></td>
-        <td><?= number_format($precio, 2, ',', '.') ?></td>
-      </tr>
-    <?php endforeach; ?>
+<?php
+$keys = array_keys($productos);
+for ($i = 0; $i < count($productos); $i++):
+    $nombre = $keys[$i];
+    $precio = $productos[$nombre];
+?>
+    <tr>
+      <td><?= htmlspecialchars($nombre) ?></td>
+      <td><?= number_format($precio, 2, ',', '.') ?></td>
+    </tr>
+<?php endfor; ?>
+
   </tbody>
 </table>
